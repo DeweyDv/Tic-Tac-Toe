@@ -1,0 +1,57 @@
+body {
+    background-color: darkslategrey;
+}
+
+.field {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vh;
+    height: 30vh;
+    background-color: white;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
+    box-sizing: border-box;
+    font-size: 8vh;
+    text-align: center;
+}
+
+.line {
+    position: absolute;
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.l1 {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    height: 0.5vh;
+}
+
+.l2 {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    height: 0.5vh;
+}
+
+.l3 {
+    grid-row: 1 / span 3;
+    grid-column: 2;
+    width: 0.5vh;
+}
+
+.l4 {
+    grid-row: 1 / span 3;
+    grid-column: 3;
+    width: 0.5vh;
+}
+
+.user_check_inp {
+    background-color: lightgrey;
+    cursor: pointer;
+}
