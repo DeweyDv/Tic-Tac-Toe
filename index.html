@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Tic-Tac-Toe - Play</title>
+</head>
+
+<body>
+    <div class="field">
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="user_check_inp"></div>
+        <div class="line l1"></div>
+        <div class="line l2"></div>
+        <div class="line l3"></div>
+        <div class="line l4"></div>
+    </div>
+    <style>
+        body {
+            background-color: darkslategrey;
+        }
+
+        .field {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30vh;
+            height: 30vh;
+            background-color: white;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 2px;
+            padding: 2px;
+            box-sizing: border-box;
+            font-size: 8vh;
+            text-align: center;
+        }
+
+        .line {
+            position: absolute;
+            background-color: grey;
+            border-radius: 5px;
+        }
+
+        .l1 {
+            grid-column: 1 / span 3;
+            grid-row: 2;
+            height: 0.5vh;
+        }
+
+        .l2 {
+            grid-column: 1 / span 3;
+            grid-row: 3;
+            height: 0.5vh;
+        }
+
+        .l3 {
+            grid-row: 1 / span 3;
+            grid-column: 2;
+            width: 0.5vh;
+        }
+
+        .l4 {
+            grid-row: 1 / span 3;
+            grid-column: 3;
+            width: 0.5vh;
+        }
+
+        .user_check_inp {
+            background-color: lightgrey;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const cells = document.querySelectorAll('.user_check_inp');
+        let team = 'O';
+        let moves = 0;
+        cells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                if (cell.innerHTML === '') {
+                    cell.innerHTML = team;
+                    moves++;
+                    if (checker(cells, team)) {
+                        alert(`${team} wins!`);
+                    } else if (moves === 9) {
+                        alert('Draw!');
+                    } else {
+                        team = team === 'O' ? 'X' : 'O';
+                    }
+                }
+            });
+        });
+        function checker(cells, team) {
+            return [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].some(combo => {
+                return combo.every(index => cells[index].innerHTML === team);
+            });
+        }
+    </script>
+</body>
+
+</html>
